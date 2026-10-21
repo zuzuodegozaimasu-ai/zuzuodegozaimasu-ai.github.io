@@ -10,7 +10,7 @@
 <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
 <link rel="icon" href="/icons/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-<meta name="theme-color" content="#14322b">
+<meta name="theme-color" content="#0f2a24">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="配布マップ">
 <meta property="og:title" content="配布マップ｜ポスティングの二重配りを防ぐ">
@@ -19,31 +19,130 @@
 <meta property="og:image" content="https://zuzuodegozaimasu-ai.github.io/icons/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"配布マップ","url":"https://zuzuodegozaimasu-ai.github.io/"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
 <style>
-:root{--bg:#0f2a24;--ink:#ffffff;--muted:#b9d3c8;--accent:#5fd39c;--btn:#1f8a5b}
-@media (prefers-color-scheme:light){:root{--bg:#eaf1ec;--ink:#0f2a24;--muted:#4f625b;--accent:#1f8a5b;--btn:#1f8a5b}}
+:root{
+  --paper:#0f2a24; --ink:#f2f7f4; --muted:#a9c4b9; --block:#173a31; --road:#0b221d; --house:#21483e;
+  --green:#5fd39c; --green-deep:#1f8a5b; --red:#ff6b5e; --blue:#6fa3ff; --card:rgba(255,255,255,.06); --line:rgba(255,255,255,.12);
+  --display:"Dela Gothic One","Hiragino Sans",sans-serif; --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root{
+  --paper:#eef4f0; --ink:#0f2a24; --muted:#4f625b; --block:#dbe7e0; --road:#eef4f0; --house:#ffffff;
+  --green:#1f8a5b; --green-deep:#1f8a5b; --red:#d23f33; --blue:#2b63c9; --card:#ffffff; --line:#d3e0d8; color-scheme:light}}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;display:grid;place-items:center;padding:24px 16px}
-main{max-width:440px;text-align:center}
-img{width:112px;height:112px;border-radius:26px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-h1{font-size:34px;margin:20px 0 6px;letter-spacing:.02em}
-.lead{color:var(--accent);font-weight:800;margin:0 0 10px;font-size:17px}
-p{color:var(--muted);line-height:1.8;margin:0 0 24px;font-size:15px}
-a.btn{display:inline-block;background:var(--btn);color:#fff;text-decoration:none;font-weight:800;padding:15px 30px;border-radius:14px;font-size:16px}
-a.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-small{display:block;margin-top:28px;color:var(--muted);font-size:12px}
-small a{color:inherit}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.75;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 18px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 28px) max(16px,env(safe-area-inset-left,0px))}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px;text-decoration:none}
+.logo img{width:34px;height:34px;border-radius:9px}
+.open-s{font-weight:700;font-size:14px;text-decoration:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 16px}
+.hero{display:grid;gap:28px;align-items:center;padding:28px 0 8px}
+@media (min-width:860px){.hero{grid-template-columns:1.05fr 1fr;gap:48px;padding-top:56px}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--card)}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 25%,transparent)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,11vw,72px);line-height:1.18;margin:16px 0 14px;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--green)}
+.lead{font-size:clamp(15px,4vw,18px);color:var(--muted);margin:0 0 26px;max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green-deep);color:#fff;text-decoration:none;font-weight:900;font-size:17px;padding:16px 26px;border-radius:16px;box-shadow:0 10px 30px color-mix(in srgb,var(--green-deep) 40%,transparent);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+.free{font-size:13px;color:var(--muted)}
+.btn:focus-visible,.open-s:focus-visible,.logo:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+/* map illustration */
+.mapcard{position:relative;border-radius:28px;overflow:hidden;background:var(--road);border:1px solid var(--line);aspect-ratio:1/0.82;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.mapcard svg{display:block;width:100%;height:100%}
+.blk{fill:var(--block)} .hs{fill:var(--house)}
+.range{fill:color-mix(in srgb,var(--blue) 12%,transparent);stroke:var(--blue);stroke-width:2.5;stroke-dasharray:8 7}
+.pin{transform-box:fill-box;transform-origin:50% 100%;animation:drop .5s cubic-bezier(.3,1.6,.5,1) both}
+.p1{animation-delay:.2s}.p2{animation-delay:.45s}.p3{animation-delay:.7s}.p4{animation-delay:.95s}.p5{animation-delay:1.2s}.p6{animation-delay:1.45s}
+@keyframes drop{from{opacity:0;transform:translateY(-18px) scale(.6)}to{opacity:1;transform:none}}
+.me{animation:pulse 2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+.bubble{position:absolute;right:12px;top:14px;background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:13px;font-weight:700;animation:drop .5s 1.8s both;white-space:nowrap}
+.bubble b{color:var(--green)}
+.legend{position:absolute;left:12px;bottom:12px;display:flex;gap:10px;flex-wrap:wrap;font-size:12px;font-weight:700;background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:6px 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%}
+@media (prefers-reduced-motion:reduce){.pin,.bubble{animation:none}.me{animation:none;opacity:0}}
+
+.feats{display:grid;gap:12px;margin:40px 0 0;padding:0;list-style:none}
+@media (min-width:700px){.feats{grid-template-columns:repeat(3,1fr)}}
+.feats li{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.feats .n{font-family:var(--display);font-size:13px;color:var(--green);letter-spacing:.1em}
+.feats h2{font-size:17px;margin:4px 0 4px;font-weight:900}
+.feats p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+footer{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
-<main>
-  <img src="/icons/icon-512.png" alt="配布マップのアイコン">
-  <h1>配布マップ</h1>
-  <p class="lead">ポスティングの二重配りを防ぐ</p>
-  <p>配った家をタップするだけで、チーム全員の地図にすぐ共有。配布範囲の分担や枚数の集計もできます。スマホのブラウザで、無料ですぐ使えます。</p>
-  <a class="btn" href="/posting-map/">配布マップを開く</a>
-  <small><a href="/posting-map/tokushoho.html">特定商取引法に基づく表記</a></small>
-</main>
+<div class="wrap">
+  <header>
+    <a class="logo" href="/"><img src="/icons/icon-192.png" alt="" width="34" height="34">配布マップ</a>
+    <a class="open-s" href="/posting-map/">ログイン</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><i></i>ポスティング・チラシ配りに</span>
+      <h1>二重配り、<br><em>もうしない。</em></h1>
+      <p class="lead">配った家をタップするだけで、チーム全員の地図にすぐ共有。どこまで配ったか、誰がどこにいるか、ひと目で分かります。</p>
+      <div class="cta">
+        <a class="btn" href="/posting-map/">配布マップを開く<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <span class="free">無料で使えます・アプリのインストール不要</span>
+      </div>
+    </div>
+
+    <div class="mapcard" role="img" aria-label="地図の上に、配った家のピンとお断りの家のピン、配布範囲の点線、メンバーの現在地が表示されたイメージ">
+      <svg viewBox="0 0 400 328" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g>
+          <rect class="blk" x="14" y="14" width="112" height="86" rx="10"/><rect class="blk" x="146" y="14" width="120" height="86" rx="10"/><rect class="blk" x="286" y="14" width="100" height="86" rx="10"/>
+          <rect class="blk" x="14" y="120" width="112" height="90" rx="10"/><rect class="blk" x="146" y="120" width="120" height="90" rx="10"/><rect class="blk" x="286" y="120" width="100" height="90" rx="10"/>
+          <rect class="blk" x="14" y="230" width="112" height="84" rx="10"/><rect class="blk" x="146" y="230" width="120" height="84" rx="10"/><rect class="blk" x="286" y="230" width="100" height="84" rx="10"/>
+        </g>
+        <g class="hs">
+          <rect x="26" y="26" width="38" height="28" rx="4"/><rect x="76" y="26" width="38" height="28" rx="4"/><rect x="26" y="62" width="38" height="28" rx="4"/><rect x="76" y="62" width="38" height="28" rx="4"/>
+          <rect x="158" y="26" width="44" height="28" rx="4"/><rect x="212" y="26" width="42" height="28" rx="4"/><rect x="158" y="62" width="96" height="28" rx="4"/>
+          <rect x="298" y="26" width="76" height="62" rx="4"/>
+          <rect x="26" y="132" width="38" height="30" rx="4"/><rect x="76" y="132" width="38" height="30" rx="4"/><rect x="26" y="170" width="88" height="30" rx="4"/>
+          <rect x="158" y="132" width="44" height="30" rx="4"/><rect x="212" y="132" width="42" height="30" rx="4"/><rect x="158" y="170" width="44" height="30" rx="4"/><rect x="212" y="170" width="42" height="30" rx="4"/>
+          <rect x="298" y="132" width="34" height="66" rx="4"/><rect x="340" y="132" width="34" height="66" rx="4"/>
+          <rect x="26" y="242" width="88" height="60" rx="4"/><rect x="158" y="242" width="44" height="26" rx="4"/><rect x="212" y="242" width="42" height="26" rx="4"/><rect x="158" y="276" width="96" height="26" rx="4"/>
+          <rect x="298" y="242" width="76" height="60" rx="4"/>
+        </g>
+        <path class="range" d="M140 112 L392 112 L392 222 L270 222 L270 318 L140 318 Z"/>
+        <g>
+          <g class="pin p1"><path d="M180 140c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C192 145 187 140 180 140z" fill="#1f8a5b"/><path d="m175 151 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="pin p2"><path d="M233 140c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C245 145 240 140 233 140z" fill="#1f8a5b"/><path d="m228 151 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="pin p3"><path d="M180 178c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C192 183 187 178 180 178z" fill="#2b6fd1"/><path d="m175 189 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="pin p4"><path d="M233 178c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C245 183 240 178 233 178z" fill="#d23f33"/><path d="m228.5 185.5 9 9m0-9-9 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></g>
+          <g class="pin p5"><path d="M315 140c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C327 145 322 140 315 140z" fill="#1f8a5b"/><path d="m310 151 3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="pin p6"><path d="M180 246c-7 0-12 5-12 11.5 0 8.5 12 19.5 12 19.5s12-11 12-19.5C192 251 187 246 180 246z" fill="#e67700"/><circle cx="180" cy="252" r="3.2" fill="#fff"/></g>
+        </g>
+        <circle class="me" cx="270" cy="112" r="9" fill="#6fa3ff"/>
+        <circle cx="270" cy="112" r="11" fill="#2b63c9" stroke="#fff" stroke-width="3"/>
+        <text x="270" y="116.5" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="sans-serif">S</text>
+      </svg>
+      <div class="bubble">すー：<b>このエリア終わりました</b></div>
+      <div class="legend"><span><i style="background:#1f8a5b"></i>配った</span><span><i style="background:#d23f33"></i>お断り</span><span><i style="background:#e67700"></i>後日</span></div>
+    </div>
+  </section>
+
+  <ul class="feats">
+    <li><span class="n">01</span><h2>タップで記録</h2><p>配った家をタップして保存するだけ。マンションは枚数もまとめて記録できます。</p></li>
+    <li><span class="n">02</span><h2>チームで共有</h2><p>記録はすぐ全員の地図に反映。仲間の現在地や、定型文での呼び出しも。</p></li>
+    <li><span class="n">03</span><h2>範囲で分担</h2><p>指でなぞって配布範囲を決めれば、範囲ごとの枚数も自動で集計します。</p></li>
+  </ul>
+
+  <footer>
+    <span>© 配布マップ</span>
+    <a href="/posting-map/tokushoho.html">特定商取引法に基づく表記</a>
+  </footer>
+</div>
 </body>
 </html>
